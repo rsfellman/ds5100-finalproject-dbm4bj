@@ -276,7 +276,7 @@ class Analyzer:
         row_combos = self.data.apply(lambda row: tuple(sorted(row)), axis = 1)
         combo_count = row_combos.value_counts()
         combo_count_df = pd.DataFrame(combo_count)
-        combo_count_df.index.name = "combinations"
+        combo_count_df.index = pd.MultiIndex.from_tuples(combo_count_df.index)
         return combo_count_df
     
     def count_permutations(self):
@@ -291,5 +291,5 @@ class Analyzer:
         row_perm = x.apply(lambda row: tuple(row), axis = 1)
         perm_count = row_perm.value_counts()
         perm_count_df = pd.DataFrame(perm_count)
-        perm_count_df.index.name = "permutaions"
+        perm_count_df.index = pd.MultiIndex.from_tuples(perm_count_df.index)
         return perm_count_df
