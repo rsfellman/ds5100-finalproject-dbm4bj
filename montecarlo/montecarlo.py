@@ -91,7 +91,7 @@ class Die:
         for i in range(nrolls):
             result = self.__die_df.side.sample(weights=die_probs).values[0].tolist()
             results.append(result)
-        print(results)
+        return results
     
     def get_current_state(self):
         '''
@@ -154,12 +154,12 @@ class Game:
             newlist[y] = pd.DataFrame({'side':self.die_list[y].index.tolist(),
                                'die_probs':die_probs[y]})   
 
-        results=  list(range(len(dielist)))
-        for k in range(len(dielist)):
+        results=  list(range(len(self.die_list)))
+        for k in range(len(self.die_list)):
             test = newlist[k]
             results[k] = [test.side.sample(weights=die_probs[k]).values[0].tolist() for i in range(rolls)]
     
-        self.__outcome = pd.DataFrame(columns = list(range(len(dielist))),
+        self.__outcome = pd.DataFrame(columns = list(range(len(self.die_list))),
                                 index= list(range(rolls)),
                                 data = []
                                  )
@@ -288,7 +288,7 @@ class Analyzer:
         outputs:
         perm_count_df: a datareame with a MultiIndex of distinct permutations and a column for the associated counts.
         '''
-        row_perm = x.apply(lambda row: tuple(row), axis = 1)
+        row_perm = self.data.apply(lambda row: tuple(row), axis = 1)
         perm_count = row_perm.value_counts()
         perm_count_df = pd.DataFrame(perm_count)
         perm_count_df.index = pd.MultiIndex.from_tuples(perm_count_df.index)
