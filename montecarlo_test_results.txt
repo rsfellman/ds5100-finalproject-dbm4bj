@@ -1,0 +1,29 @@
+test_08_initializer (__main__.AnalyzerTestSuite.test_08_initializer)
+this tests that the attribute data created is a dataframe. ... ok
+test_09_count_jackpots (__main__.AnalyzerTestSuite.test_09_count_jackpots)
+This tests that the number of jackpots is counted correctly and returned as an integer. ... ok
+test_10_count_faces (__main__.AnalyzerTestSuite.test_10_count_faces)
+This tests if the count_faces method correctly counts the number of faces. ... ok
+test_12_count_permutations (__main__.AnalyzerTestSuite.test_12_count_permutations)
+This tests the the output of the count_permutations method is a dataframe with a MultiIndex. ... ok
+test_ll_count_combos (__main__.AnalyzerTestSuite.test_ll_count_combos)
+This tests to see if the output of the count_combos method is a dataframe with a MultiIndex by calculating the numbers of levels in the index. ... ok
+test_01_initializer (__main__.DieTestSuite.test_01_initializer)
+This tests if a numpy array of the faces is created/stored ... ok
+test_02_change_weight (__main__.DieTestSuite.test_02_change_weight)
+checks to see if the new weight is stored in the data frame with the correct side. ... ok
+test_03_roll_dice (__main__.DieTestSuite.test_03_roll_dice)
+Tests if the results are a list containing faces of the die. ... ok
+test_04_get_current_state (__main__.DieTestSuite.test_04_get_current_state)
+This tests if the outcome of this method is a dataframe with a column for wieghts. ... ok
+test_05_initializer (__main__.GameTestSuite.test_05_initializer)
+This tests to make sure our initializer creates and attribute which is equal to out input for an instance of the Game class. ... ok
+test_06_play (__main__.GameTestSuite.test_06_play)
+this tests to see if the play method correctly sampled the dice for a given number of rolls. ... ok
+test_07_show_last_play (__main__.GameTestSuite.test_07_show_last_play)
+This tests to make sure the output of the show_last_play method is a dataframe. ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.092s
+
+OK
