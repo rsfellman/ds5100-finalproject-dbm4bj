@@ -7,7 +7,7 @@ import unittest
 
 class DieTestSuite(unittest.TestCase):
     '''
-    TTests the methods in the Die class unsing unittest.
+    Tests the methods in the Die class unsing unittest.
 
     Methods:
     test_01_initializer: Tests if a numpy array of the faces is created/stored
