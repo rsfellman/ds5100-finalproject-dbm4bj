@@ -64,13 +64,14 @@ class GameTestSuite(unittest.TestCase):
     Tests to make sure the Game class is functioning as expected.
     ---
     Methods:
-    test_05_initializer: Tests to make sure the initializer creates and attribute which is equal to out input for an instance of the Game class.
+    test_05_initializer: Tests to make sure our initializer creates the attribute for the game class correctly.
+
     test_06_play: Tests to see if the play method correctly sampled the dice for a given number of rolls.
     test_07_show_last_play: Tests to make sure the output of the show_last_play method is a dataframe.
     '''
     def test_05_initializer(self):
         '''
-        Tests to make sure our initializer creates and attribute which is equal to out input for an instance of the Game class.
+        Tests to make sure our initializer creates the attribute for the game class correctly.
         '''
         dice = [1,2,3,4]
         dice_arr = np.array(dice)
@@ -82,9 +83,10 @@ class GameTestSuite(unittest.TestCase):
         die2_state = die2.get_current_state()
         die3_state = die3.get_current_state()
         die4_state = die4.get_current_state()
-        dice_list = [die1_state, die2_state, die3_state, die4_state]
+        dice_list_weights = [die1_state, die2_state, die3_state, die4_state]
+        dice_list = [die1, die2, die3, die4]
         mygame = Game(dice_list)
-        self.assertEqual(dice_list, mygame.die_list)
+        self.assertEqual(dice_list_weights, mygame.die_list)
 
     def test_06_play(self):
         '''
@@ -96,11 +98,7 @@ class GameTestSuite(unittest.TestCase):
         die2 = Die(dice_arr)
         die3 = Die(dice_arr)
         die4 = Die(dice_arr)
-        die1_state = die1.get_current_state()
-        die2_state = die2.get_current_state()
-        die3_state = die3.get_current_state()
-        die4_state = die4.get_current_state()
-        dice_list = [die1_state, die2_state, die3_state, die4_state]
+        dice_list = [die1, die2, die3, die4]
         mygame = Game(dice_list)
         nrolls = 10
         mygame.play(nrolls)
@@ -116,11 +114,7 @@ class GameTestSuite(unittest.TestCase):
         die2 = Die(dice_arr)
         die3 = Die(dice_arr)
         die4 = Die(dice_arr)
-        die1_state = die1.get_current_state()
-        die2_state = die2.get_current_state()
-        die3_state = die3.get_current_state()
-        die4_state = die4.get_current_state()
-        dice_list = [die1_state, die2_state, die3_state, die4_state]
+        dice_list = [die1, die2, die3, die4]
         mygame = Game(dice_list)
         nrolls = 10
         mygame.play(nrolls)
@@ -151,11 +145,7 @@ class AnalyzerTestSuite(unittest.TestCase):
         die2 = Die(dice_arr)
         die3 = Die(dice_arr)
         die4 = Die(dice_arr)
-        die1_state = die1.get_current_state()
-        die2_state = die2.get_current_state()
-        die3_state = die3.get_current_state()
-        die4_state = die4.get_current_state()
-        dice_list = [die1_state, die2_state, die3_state, die4_state]
+        dice_list = [die1, die2, die3, die4]
         mygame = Game(dice_list)
         nrolls = 10
         mygame.play(nrolls)
@@ -175,11 +165,7 @@ class AnalyzerTestSuite(unittest.TestCase):
         die2 = Die(dice_arr)
         die3 = Die(dice_arr)
         die4 = Die(dice_arr)
-        die1_state = die1.get_current_state()
-        die2_state = die2.get_current_state()
-        die3_state = die3.get_current_state()
-        die4_state = die4.get_current_state()
-        dice_list = [die1_state, die2_state, die3_state, die4_state]
+        dice_list = [die1, die2, die3, die4]
         mygame = Game(dice_list)
         nrolls = 10
         mygame.play(nrolls)
@@ -199,11 +185,7 @@ class AnalyzerTestSuite(unittest.TestCase):
         die2 = Die(dice_arr)
         die3 = Die(dice_arr)
         die4 = Die(dice_arr)
-        die1_state = die1.get_current_state()
-        die2_state = die2.get_current_state()
-        die3_state = die3.get_current_state()
-        die4_state = die4.get_current_state()
-        dice_list = [die1_state, die2_state, die3_state, die4_state]
+        dice_list = [die1, die2, die3, die4]
         mygame = Game(dice_list)
         nrolls = 10
         mygame.play(nrolls)
@@ -222,11 +204,7 @@ class AnalyzerTestSuite(unittest.TestCase):
         die2 = Die(dice_arr)
         die3 = Die(dice_arr)
         die4 = Die(dice_arr)
-        die1_state = die1.get_current_state()
-        die2_state = die2.get_current_state()
-        die3_state = die3.get_current_state()
-        die4_state = die4.get_current_state()
-        dice_list = [die1_state, die2_state, die3_state, die4_state]
+        dice_list = [die1, die2, die3, die4]
         mygame = Game(dice_list)
         nrolls = 10
         mygame.play(nrolls)
@@ -247,11 +225,7 @@ class AnalyzerTestSuite(unittest.TestCase):
         die2 = Die(dice_arr)
         die3 = Die(dice_arr)
         die4 = Die(dice_arr)
-        die1_state = die1.get_current_state()
-        die2_state = die2.get_current_state()
-        die3_state = die3.get_current_state()
-        die4_state = die4.get_current_state()
-        dice_list = [die1_state, die2_state, die3_state, die4_state]
+        dice_list = [die1, die2, die3, die4]
         mygame = Game(dice_list)
         nrolls = 10
         mygame.play(nrolls)
