@@ -1,4 +1,9 @@
 # Monte Carlo Simulator
-## Rachel Fellman
-### DS5100 -Final Project
+
+# Metadata  
+## Name: Rachel Fellman
+## Project: Monte Carlo Simulator - DS5100 Final Project
+
+# Synopsis
+
 
