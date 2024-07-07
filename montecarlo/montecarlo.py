@@ -133,16 +133,20 @@ class Game:
     attributes:
     die_list: Python list of dice, where each element of the list is a single die.
     '''
-    def __init__(self, die_list):
+    def __init__(self, dielist):
         '''
         Initializer for the Game class
         ---
         inputs:
-        die_list:   Python list of dice created using the Die class.
+        dielist:   Python list of dice created using the Die class.
                     The die in die list should have the same number of sides and associated faces.
         outputs:
-        die_list: Python list of dice, where each element of the list is a single die.
+        dielist: Python list of dice, where each element of the list is a single die.
         '''
+        die_list = list(range(len(dielist)))
+        for i in range(len(dielist)):
+            die_list[i] = dielist[i].get_current_state()
+        
         self.die_list = die_list
     
     def play (self, rolls):
