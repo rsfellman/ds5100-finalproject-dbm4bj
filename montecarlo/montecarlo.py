@@ -82,8 +82,7 @@ class Die:
 
     def roll_dice(self, nrolls=1):
         '''
-        Calculates the probability for each side of the die from the assigned weights.
-        Next, takes a sample of the sides using the calculated probabilities, and prints the results of the rolls as a list.
+        Takes a sample of the sides using the assigned weights, and prints the results of the rolls as a list.
         ---
         inputs:
         nrolls: Default set to one unless the user reassigns it. 
@@ -93,9 +92,9 @@ class Die:
         '''
         
         results = []
-        die_probs = [i/sum(self.__die_df['weights']) for i in self.__die_df['weights']]
+        weight = self.__die_df['weights']
         for i in range(nrolls):
-            result = self.__die_df.side.sample(weights=die_probs).values[0].tolist()
+            result = self.__die_df.side.sample(weights=weight).values[0].tolist()
             results.append(result)
         return results
     
@@ -124,8 +123,7 @@ class Game:
     __init__:   Initializer. It takes an input of a python list of dice.
 
     play:   The user calls this method to "roll" the die. The user is able to specify the number of rolls.
-            Calculates the probability of each face based on the weights assigned to each side of the die.
-            The die are sampled for the number of rolls specified and the output is stored in a private dataframe.
+            The die are sampled for the number of rolls specified, taking into account the given weights, and the output is stored in a private dataframe.
 
     show_last_play: Method to see the results of their most recent play.
                     A dataframe of the results is returned.
@@ -152,27 +150,26 @@ class Game:
     def play (self, rolls):
         '''
         Allows user to "roll" the die.
-        Probability of each face being rolled is calculated using the weights given in the die_list.
-        Samples the faces of the die for a given number of rolls based on the calculated probabilites and saves the result in a private dataframe.
+        Samples the faces of the die for a given number of rolls based on the given weights and saves the result in a private dataframe.
         ---
         inputs:
         rolls:  Integer
                 Specifies how many time the die should be "rolled"/sampled.
         outputs:none
         '''
-        die_probs = list(range(len(self.die_list)))
-        for x in range(0,len(self.die_list)):
-            die_probs[x] = [i/sum(self.die_list[x]['weights']) for i in self.die_list[x]['weights']]
+        die_weights = list(range(len(self.die_list)))
+        for x in range(len(self.die_list)):
+            die_weights[x] = list(self.die_list[x]['weights'])
 
         newlist= list(range(len(self.die_list)))
         for y in range(len(self.die_list)):
             newlist[y] = pd.DataFrame({'side':self.die_list[y].index.tolist(),
-                               'die_probs':die_probs[y]})   
+                               'die_probs':die_weights[y]})   
 
         results=  list(range(len(self.die_list)))
         for k in range(len(self.die_list)):
             test = newlist[k]
-            results[k] = [test.side.sample(weights=die_probs[k]).values[0].tolist() for i in range(rolls)]
+            results[k] = [test.side.sample(weights=die_weights[k], replace = True).values[0].tolist() for i in range(rolls)]
     
         self.__outcome = pd.DataFrame(columns = list(range(len(self.die_list))),
                                 index= list(range(rolls)),
