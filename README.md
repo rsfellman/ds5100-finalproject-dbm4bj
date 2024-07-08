@@ -53,6 +53,9 @@ The analyzer class has the following methods available: `count_jackpots`, `count
 ## API Descirption
 This package includes one module: montecarlo. Within the montecarlo module there are 3 classes: Die, Game, and Analyzer. Below are the docstrings for each class. These can also be accessed by using the `help()` function.
 
+
+
+
 ### Die Class 
 
 Create a die with the ability to change the weights of select faces of said die and roll the die, taking into account the weights.
@@ -129,6 +132,9 @@ outputs:
  - results: a python list of the results of the rolls
 
 
+
+
+
 ### Game Class
 
 Gives the user the ability to roll one or more similar die. 
@@ -185,6 +191,9 @@ inputs:
  outputs:
  - last_play:  Dataframe of the results of the most recent play. 
          Can be in either wide or narrow format.
+
+
+
 
 
 ### Analyzer Class
@@ -244,6 +253,8 @@ Outputs:
 inputs: none
 outputs: 
 - face_count: Data frame with roll number as the index, faces as the columns and counts for each face appearance as the data.
+
+---
 
 ***count_jackpots(self)***
 - Calculates the number of times a game resulted in a jackpot and returns and integer.
