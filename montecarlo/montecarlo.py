@@ -139,7 +139,7 @@ class Game:
         dielist:   Python list of dice created using the Die class.
                     The die in die list should have the same number of sides and associated faces.
         outputs:
-        dielist: Python list of dice, where each element of the list is a single die.
+        die_list: Python list of dice, where each element of the list is a single die.
         '''
         die_list = list(range(len(dielist)))
         for i in range(len(dielist)):
