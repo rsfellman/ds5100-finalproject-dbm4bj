@@ -199,7 +199,7 @@ outputs:
 - Samples the faces of the die for a given number of rolls based on the given weights and saves the result in a private dataframe.
 
 inputs:
- - **rolls**
+ - rolls
      - Integer
      - Specifies how many time the die should be "rolled"/sampled.  
     
