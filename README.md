@@ -16,6 +16,7 @@ Next the package can be imported using the `import` function.
     import montecarlo.montecarlo
 The user can just import montecarlo, but I would suggest importing the module as well to make using this package easier.
 
+
 ### Creating Dice
 Dice are created using the `Die` class. The user must create a numpy array which consists of the faces they want on their die. Below is an example:  
     
@@ -82,7 +83,7 @@ Methods defined here:
 
 ---
  
-**__init__(self, N)**
+<ins>**__init__(self, N)**<ins>
     
    - Initializer. 
    - It sets up the die with a given number of sides and adds a weight of 1 for each side of the die.
@@ -94,9 +95,8 @@ inputs:
         This method will return errors if those conditions are not met.
 outputs:None
 
----
 
-**change_weight(self, face, new_weight)**
+<ins>**change_weight(self, face, new_weight)**<ins>
 
    - Changes the weight of one specified side of the die by assigning the new weight to the data frame.
 
@@ -111,18 +111,16 @@ outputs:None
                 An error will be returned if it does not meet those conditions.
 outputs: None
 
----
 
- **get_current_state(self)**
+ <ins>**get_current_state(self)**<ins>
  - Prints a data frame with the sides of the die as an index and the assigned weights for each side as the data.
 
-inputs: none
+inputs: none  
 outputs:
  - die_df_index: data frame with the faces of the die as an index and a single column with the assigned weights for each face.
- 
- ---
+
   
- **roll_dice(self, nrolls=1)**
+<ins> **roll_dice(self, nrolls=1)**<ins>
 - Takes a sample of the sides using the assigned weights, and prints the results of the rolls as a list.
 
 inputs:
@@ -132,7 +130,7 @@ outputs:
  - results: a python list of the results of the rolls
 
 
-
+---
 
 
 ### Game Class
@@ -156,10 +154,10 @@ Attributes:
 - **die_list**: Python list of dice, where each element of the list is a single die.
  
  
- Methods defined here:
+More on Methods Here:
  
- ---
- **__init__(self, dielist)**
+
+<ins>**__init__(self, dielist)**<ins>
 - Initializer for the Game class
 inputs:
 - dielist:   Python list of dice created using the Die class.
@@ -167,33 +165,34 @@ inputs:
 outputs:
 - dielist: Python list of dice, where each element of the list is a single die.
 
----
 
-**play(self, rolls)**
+
+<ins>**play(self, rolls)**<ins>
  - Allows user to "roll" the die.
 - Samples the faces of the die for a given number of rolls based on the given weights and saves the result in a private dataframe.
 
 inputs:
  - **rolls**:  Integer
-                Specifies how many time the die should be "rolled"/sampled.
+                Specifies how many time the die should be "rolled"/sampled.  
 outputs:none
 
----
 
-**show_last_play(self, format='wide')**
+
+<ins>**show_last_play(self, format='wide')**<ins>
+    
 - Used to see the results of the most recent play. 
 - Returns dataframe created by data in the play class.
 - The data can be returned in 'narrow' or 'wide' format and an error will be raised if a different format is supplied by the user.
 
 inputs:
 - format: "narrow" or "wide"
-    Format defaults to wide but the user can choose to have the data presented in narrow format by entering "narrow".
- outputs:
+    Format defaults to wide but the user can choose to have the data presented in narrow format by entering "narrow".  
+ outputs:  
  - last_play:  Dataframe of the results of the most recent play. 
          Can be in either wide or narrow format.
 
 
-
+---
 
 
 ### Analyzer Class
@@ -222,9 +221,9 @@ Attributes:
 - **data**: a data frame of the last play.
   
   
-Methods defined here:
+More on Methods Here:
  
-**__init__(self, game)**
+<ins>**__init__(self, game)**<ins>
 - Initializer. Takes in a an instance of the Game class. 
 - From the input of the game class the method show_last_play is called to create a data frame of the the last play.
 
@@ -233,10 +232,9 @@ Inputs:
          If game is not a Game object, a ValueError will be raised.
  Outputs: 
   - data: Data frame of the last play.
+
  
---- 
- 
-**count_combos(self)**
+<ins>**count_combos(self)**<ins>
  - This method calculates the distinct combination of faces rolled and their counts.
  - A distinct combination is not dependent on order and may have repetitions.
 
@@ -244,31 +242,30 @@ Inputs: none
 Outputs: 
 - combo_count_df: Dataframe with a MultiIndex of distinct combinations and a single column for the associated counts.
 
- ---
+
  
-**count_faces(self)**
+<ins>**count_faces(self)**<ins>
 - Counts the number of times a given face appears in one roll using the value_counts() method with a lambda function.
 - The lambda function is the applied across the data frame to calculate the face counts for each roll.
 
-inputs: none
+inputs: none  
 outputs: 
 - face_count: Data frame with roll number as the index, faces as the columns and counts for each face appearance as the data.
 
----
 
-***count_jackpots(self)***
+<ins>**count_jackpots(self)**<ins>
 - Calculates the number of times a game resulted in a jackpot and returns and integer.
 - A jackpot is when all the races for a given roll are the same.
 - For each row of the data, this method finds the number of unique values. If the number of unique values is greater than 1, that roll was not a jackpot.
 - For each row where the number of unique values is equal to one, the jackpot count goes up by one.
 
-inputs:none
+inputs:none  
 outputs: 
 - jack_count: integer, the number of jackpots
 
----
 
-***count_permutations(self)***
+
+<ins>**count_permutations(self)**<ins>
 - Calculates the distinct permutations of faces rolled in a game and their counts.
 - A permutaiton is dependent on order and may contain repetitions.
 
