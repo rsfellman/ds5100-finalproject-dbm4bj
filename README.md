@@ -186,37 +186,44 @@ inputs:
 - dielist:
     - Python list of dice created using the Die class.
     - The dice in die list should have the same number of sides and associated faces.
+ 
+      
 outputs:
 - die_list:
     - Python list of dice, where each element of the list is a single die.
 
 
 
-<ins>**play(self, rolls)**<ins>
+##### <ins>play(self, rolls)<ins>
  - Allows user to "roll" the die.
 - Samples the faces of the die for a given number of rolls based on the given weights and saves the result in a private dataframe.
 
 inputs:
- - **rolls**:  Integer
-                Specifies how many time the die should be "rolled"/sampled.  
+ - **rolls**
+     - Integer
+     - Specifies how many time the die should be "rolled"/sampled.  
     
     
-outputs:none
+outputs: None
 
 
 
-<ins>**show_last_play(self, format='wide')**<ins>
+##### <ins>show_last_play(self, format='wide')<ins>
     
 - Used to see the results of the most recent play. 
 - Returns dataframe created by data in the play class.
 - The data can be returned in 'narrow' or 'wide' format and an error will be raised if a different format is supplied by the user.
 
-inputs:
-- format: "narrow" or "wide"
-    Format defaults to wide but the user can choose to have the data presented in narrow format by entering "narrow".  
+inputs:  
+- format
+    - "narrow" or "wide"
+    - Format defaults to wide but the user can choose to have the data presented in narrow format by entering "narrow".
+
+       
  outputs:  
- - last_play:  Dataframe of the results of the most recent play. 
-         Can be in either wide or narrow format.
+ - last_play
+     - Dataframe of the results of the most recent play.
+     - Can be in either wide or narrow format.
 
 
 ---
@@ -226,77 +233,96 @@ inputs:
 
 Takes the results of a game played via the Game class and computes statistics about said game.
 
-Methods:
- - **__init__**:   
-    - Initializer. It takes in an instance of the Game class.
-     -If the input is not an instance of the Game class, a ValueError will be raised.
-      - A dataframe named data is created. Data holds the information for the last play from the game class. 
-- **count_jackpots**: A jackpot is when all the faces for a given roll are the same.
-                    The count_jackpots method counts the number of times a game resulted in a jackpot and returns an integer.
+#### Methods:
+ - **__init__**:
+     - Initializer.
+     - Takes in an instance of the Game class.
+     - If the input is not an instance of the Game class, a ValueError will be raised.
+     - A dataframe named data is created. Data holds the information for the last play from the game class.
+       
+- **count_jackpots**
+    - A jackpot is when all the faces for a given roll are the same.
+    - The count_jackpots method counts the number of times a game resulted in a jackpot and returns an integer.
  
- - **count_faces**:    Calculates the number of times a given face is returned for a roll.
-             A dataframe of the results is returned.
+ - **count_faces**
+     - Calculates the number of times a given face is returned for a roll.
+     - A dataframe of the results is returned.
   
- - **combo_count**:    Counts the number of distinct combinations among the rolls.
-         A distinct combination is order-independent and can included repetitions.
-        A data frame of the combinations and associated counts is returned.
+ - **combo_count**
+     - Counts the number of distinct combinations among the rolls.
+     - A distinct combination is order-independent and can included repetitions.
+     - A data frame of the combinations and associated counts is returned.
  
- - **permutation_count**:  Counts the number of disinct permutations among the rolls.
-         A distinct permutation is order-dependent and can include repetitions.
-         A data frame of the permutations and counts is returned.
+ - **permutation_count**
+     - Counts the number of disinct permutations among the rolls.
+     - A distinct permutation is order-dependent and can include repetitions.
+     - A data frame of the permutations and counts is returned.
 
-Attributes:
-- **data**: a data frame of the last play.
+#### Attributes:
+- **data**
+    - Data frame of the last play.
   
   
-More on Methods Here:
+#### More on Analyzer Methods:
  
-<ins>**__init__(self, game)**<ins>
+##### <ins>__init__(self, game)<ins>
 - Initializer. Takes in a an instance of the Game class. 
 - From the input of the game class the method show_last_play is called to create a data frame of the the last play.
 
 Inputs:
-- game:   A Game object/instnace of the game class.
-         If game is not a Game object, a ValueError will be raised.
+- game:
+    - A Game object/instnace of the game class.
+    - If game is not a Game object, a ValueError will be raised.
+      
  Outputs: 
-  - data: Data frame of the last play.
+  - data:
+      - Data frame of the last play.
 
  
-<ins>**count_combos(self)**<ins>
+##### <ins>count_combos(self)<ins>
  - This method calculates the distinct combination of faces rolled and their counts.
  - A distinct combination is not dependent on order and may have repetitions.
 
-Inputs: none
+Inputs: None  
+
 Outputs: 
-- combo_count_df: Dataframe with a MultiIndex of distinct combinations and a single column for the associated counts.
+- combo_count_df
+    - Dataframe with a MultiIndex of distinct combinations and a single column for the associated counts.
 
 
  
-<ins>**count_faces(self)**<ins>
+##### <ins>count_faces(self)<ins>
 - Counts the number of times a given face appears in one roll using the value_counts() method with a lambda function.
 - The lambda function is the applied across the data frame to calculate the face counts for each roll.
 
-inputs: none  
+inputs: None 
+
 outputs: 
-- face_count: Data frame with roll number as the index, faces as the columns and counts for each face appearance as the data.
+- face_count
+    - Data frame with roll number as the index, faces as the columns and counts for each face appearance as the data.
 
 
-<ins>**count_jackpots(self)**<ins>
+##### <ins>count_jackpots(self)<ins>
 - Calculates the number of times a game resulted in a jackpot and returns and integer.
 - A jackpot is when all the races for a given roll are the same.
 - For each row of the data, this method finds the number of unique values. If the number of unique values is greater than 1, that roll was not a jackpot.
 - For each row where the number of unique values is equal to one, the jackpot count goes up by one.
 
-inputs:none  
+inputs:none 
+
 outputs: 
-- jack_count: integer, the number of jackpots
+- jack_count
+    - integer
+    - the number of jackpots
 
 
 
-<ins>**count_permutations(self)**<ins>
+##### <ins>count_permutations(self)<ins>
 - Calculates the distinct permutations of faces rolled in a game and their counts.
 - A permutaiton is dependent on order and may contain repetitions.
 
-inputs:none
+inputs:None  
+
 outputs:
-- perm_count_df: Datareame with a MultiIndex of distinct permutations and a column for the associated counts.
+- perm_count_df
+    - Datareame with a MultiIndex of distinct permutations and a column for the associated counts.
