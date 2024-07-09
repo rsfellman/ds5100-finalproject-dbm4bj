@@ -79,9 +79,9 @@ Attributes:
     
    - **faces**: NumPy array of the faces for a die.
     
-Methods defined here:
+More on Methods Here:
 
----
+
  
 <ins>**__init__(self, N)**<ins>
     
@@ -93,6 +93,8 @@ inputs:
    - N: Faces for a die.  
         N must be a NumPy array with unique values. 
         This method will return errors if those conditions are not met.
+    
+    
 outputs:None
 
 
@@ -109,6 +111,8 @@ outputs:None
    - new_weight: This is the new weight you are assigning to a side. 
                 This must be an integer or a float. 
                 An error will be returned if it does not meet those conditions.
+    
+    
 outputs: None
 
 
@@ -116,6 +120,8 @@ outputs: None
  - Prints a data frame with the sides of the die as an index and the assigned weights for each side as the data.
 
 inputs: none  
+     
+     
 outputs:
  - die_df_index: data frame with the faces of the die as an index and a single column with the assigned weights for each face.
 
@@ -141,6 +147,7 @@ Game is initialized with a python list of one or more dice created from the die 
 Game gives the user the ability to "roll" the inputed dice a given number of times.
 
 Methods:
+    
 - **__init__**:   Initializer. It takes an input of a python list of dice.
   
 - **play**:   The user calls this method to "roll" the die. The user is able to specify the number of rolls.
@@ -174,6 +181,8 @@ outputs:
 inputs:
  - **rolls**:  Integer
                 Specifies how many time the die should be "rolled"/sampled.  
+    
+    
 outputs:none
 
 
@@ -200,9 +209,10 @@ inputs:
 Takes the results of a game played via the Game class and computes statistics about said game.
 
 Methods:
- - **__init__**:   Initializer. It takes in an instance of the Game class.
-                 If the input is not an instance of the Game class, a ValueError will be raised.
-                 A dataframe named data is created. Data holds the information for the last play from the game class. 
+ - **__init__**:   
+    - Initializer. It takes in an instance of the Game class.
+     -If the input is not an instance of the Game class, a ValueError will be raised.
+      - A dataframe named data is created. Data holds the information for the last play from the game class. 
 - **count_jackpots**: A jackpot is when all the faces for a given roll are the same.
                     The count_jackpots method counts the number of times a game resulted in a jackpot and returns an integer.
  
