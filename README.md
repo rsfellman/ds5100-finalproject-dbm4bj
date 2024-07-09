@@ -61,79 +61,89 @@ This package includes one module: montecarlo. Within the montecarlo module there
 
 Create a die with the ability to change the weights of select faces of said die and roll the die, taking into account the weights.
 
-Methods:
+#### Methods:
 
-   -  **__init__**:   This is the initializer.
-             The user must input a numpy array with faced for the die.
+   -  **__init__**
+       - This is the initializer.
+       - The user must input a numpy array with faced for the die.
   
-  -  **change_weight**: Changes the weight of one face of the die.
+  -  **change_weight**
+      - Changes the weight of one face of the die.
       
   
-  -  **roll_die**:   Rolls the die a given number of times.
-                The results for roll_die will change as if the weights for the die are changed.
+  -  **roll_die**
+      -  Rolls the die a given number of times.
+      -  The results for roll_die will change as if the weights for the die are changed.
   
   
-   - **get_current_state**: Prints a data frame with the sides of the die as an index and the assigned weights for each side as the data.
+   - **get_current_state**
+       - Prints a data frame with the sides of the die as an index and the assigned weights for each side as the data.
 
-Attributes: 
+#### Attributes: 
     
    - **faces**: NumPy array of the faces for a die.
     
-More on Methods Here:
+#### More on Die Methods:
 
 
  
-<ins>**__init__(self, N)**<ins>
+##### <ins>__init__(self, N)<ins>
     
    - Initializer. 
    - It sets up the die with a given number of sides and adds a weight of 1 for each side of the die.
 
 inputs:
  
-   - N: Faces for a die.  
-        N must be a NumPy array with unique values. 
-        This method will return errors if those conditions are not met.
-    
-    
-outputs:None
-
-
-<ins>**change_weight(self, face, new_weight)**<ins>
-
-   - Changes the weight of one specified side of the die by assigning the new weight to the data frame.
-
- inputs:
- 
-   - face:   The face from your die that you want to change the weight of.
-            This must be in the initial NumPy array N.
-            This method will throw an error if the face listed is not in the original numpy array N.
-     
-   - new_weight: This is the new weight you are assigning to a side. 
-                This must be an integer or a float. 
-                An error will be returned if it does not meet those conditions.
+   - N:
+       - Faces for a die.
+       - N must be a NumPy array with unique values.
+       - This method will return errors if those conditions are not met.
     
     
 outputs: None
 
 
- <ins>**get_current_state(self)**<ins>
+##### <ins>change_weight(self, face, new_weight)<ins>
+
+   - Changes the weight of one specified side of the die by assigning the new weight to the data frame.
+
+ inputs:
+ 
+   - face:
+       - The face from your die that you want to change the weight of.
+       - This must be in the initial NumPy array N.
+       - This method will throw an error if the face listed is not in the original numpy array N.
+     
+   - new_weight:
+       - This is the new weight you are assigning to a side.
+       - This must be an integer or a float.
+       - An error will be returned if it does not meet those conditions.
+    
+    
+outputs: None
+
+
+ ##### <ins>get_current_state(self)<ins>
  - Prints a data frame with the sides of the die as an index and the assigned weights for each side as the data.
 
-inputs: none  
+inputs: None  
      
      
 outputs:
- - die_df_index: data frame with the faces of the die as an index and a single column with the assigned weights for each face.
+ - die_df_index:
+     - data frame with the faces of the die as an index and a single column with the assigned weights for each face.
 
   
-<ins> **roll_dice(self, nrolls=1)**<ins>
+##### <ins> roll_dice(self, nrolls=1)<ins>
 - Takes a sample of the sides using the assigned weights, and prints the results of the rolls as a list.
 
 inputs:
-- nrolls: Default set to one unless the user reassigns it. 
-        Nrolls should be an integer.
+- nrolls:
+    - Default set to one unless the user reassigns it.
+    - Nrolls should be an integer.
 outputs:
- - results: a python list of the results of the rolls
+ - results:
+     - A python list of the results of the rolls
 
 
 ---
@@ -141,36 +151,44 @@ outputs:
 
 ### Game Class
 
-Gives the user the ability to roll one or more similar die. 
-The die should have the same number of sides and associated faces.
-Game is initialized with a python list of one or more dice created from the die class.
-Game gives the user the ability to "roll" the inputed dice a given number of times.
+-Gives the user the ability to roll one or more similar die. 
+-The die should have the same number of sides and associated faces.
+-Game is initialized with a python list of one or more dice created from the die class.
+-Game gives the user the ability to "roll" the inputed dice a given number of times.
 
-Methods:
+#### Methods:
     
-- **__init__**:   Initializer. It takes an input of a python list of dice.
+- **__init__**
+    - Initializer.
+    - Takes an input of a python list of dice.
   
-- **play**:   The user calls this method to "roll" the die. The user is able to specify the number of rolls.
-            The die are sampled, taking into account the given weights, for the number of rolls specified and the output is stored in a private dataframe.
+- **play**
+    - The user calls this method to "roll" the die. The user is able to specify the number of rolls.
+    - The die are sampled, taking into account the given weights, for the number of rolls specified and the output is stored in a private dataframe.
 
-- **show_last_play**: Method to see the results of their most recent play.
-                    A dataframe of the results is returned.
+- **show_last_play**
+    - Method to see the results of their most recent play.
+    - A dataframe of the results is returned.
  
-Attributes:
+#### Attributes:
 
-- **die_list**: Python list of dice, where each element of the list is a single die.
+- **die_list**
+    - Python list of dice where each element of the list is a single die.
  
  
-More on Methods Here:
+#### More on Game Methods:
  
 
-<ins>**__init__(self, dielist)**<ins>
+##### <ins>__init__(self, dielist)<ins>
 - Initializer for the Game class
+  
 inputs:
-- dielist:   Python list of dice created using the Die class.
-            The die in die list should have the same number of sides and associated faces.
+- dielist:
+    - Python list of dice created using the Die class.
+    - The dice in die list should have the same number of sides and associated faces.
 outputs:
-- dielist: Python list of dice, where each element of the list is a single die.
+- die_list:
+    - Python list of dice, where each element of the list is a single die.
 
 
 
