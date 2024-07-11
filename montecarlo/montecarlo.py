@@ -222,11 +222,11 @@ class Analyzer:
     count_faces:    Calculates the number of times a given face is returned for a roll.
                     A dataframe of the results is returned.
 
-    combo_count:    Counts the number of distinct combinations among the rolls.
+    count_combos:    Counts the number of distinct combinations among the rolls.
                     A distinct combination is order-independent and can included repetitions.
                     A data frame of the combinations and associated counts is returned.
 
-    permutation_count:  Counts the number of disinct permutations among the rolls.
+    count_permutaions:  Counts the number of disinct permutations among the rolls.
                         A distinct permutation is order-dependent and can include repetitions.
                         A data frame of the permutations and counts is returned.
     ---
