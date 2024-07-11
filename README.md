@@ -16,15 +16,16 @@ If you have access to this package it can be easily installed using the followin
 Next the package can be imported using the `import` function.  
     
     import montecarlo.montecarlo
+    
 The user can just import montecarlo, but I would suggest importing the module as well to make using this package easier.
 
 
 ### Creating Dice
 Dice are created using the `Die` class. The user must create a numpy array which consists of the faces they want on their die. Below is an example:  
-    
-    die1 = np.array([1,2,3,4,5,6])   
-    mydie = montecarlo.Die(die_arr)
-
+``` python  
+die1 = np.array([1,2,3,4,5,6])   
+mydie = montecarlo.Die(die1)
+```    
 From the instance of the `Die` class created, the weights of the faces of the die can be changed using the `change_weights` method. By default, the weight of each face of the die is set to 1.
 
 The current weights and side of the die can be seen using the `get_current_state` method.
@@ -33,25 +34,25 @@ This `Die` class also gives the user the ability to roll the die a given number 
 
 ### Playing a Game
 A game is created using the `Game` class. The `Game` class takes an input of a list of dice. The dice in the list should be objects created from the `Die` class explained above. All of the dice in this list should have the same number of sides and associated faces. See the game created below with 2 of the same dice:
-
-    mygame = montecarlo.Game([mydie,mydie])
-
+``` python
+mygame = montecarlo.Game([mydie,mydie])
+```
 From this instance of the `Game` class the user can use the play method to roll the dice. With the play method, an input of the number of rolls for the game is required. In the example below, I will use 10 rolls. 
-
-    mygame.play(10)
-
+```python
+mygame.play(10)
+```
 The results from this game can be seen using the `show_last_play` method, which returns a dataframe detailing the outcome of each roll.
 
 ### Analyzing a Game
 A game is analyzed using the `Analyzer` class. The input for this class is a game object like the one created above. See below for an example of the `Analyzer` class:  
-    
-    myanalyzer = montecarlo.Analyzer(mygame)
+```python
+myanalyzer = montecarlo.Analyzer(mygame)
+```
 
-
-The analyzer class has the following methods available: `count_jackpots`, `count_faces`, `combo_count`, and `permutation_count`. Below is an example of using the `count_jackpots` method which returns an integer.
-
-    myanalyzer.count_jackpots() 
-
+The analyzer class has the following methods available: `count_jackpots`, `count_faces`, `count_combos`, and `count_permutations`. Below is an example of using the `count_jackpots` method which returns an integer.
+```python
+myanalyzer.count_jackpots() 
+```
 
 ## API Descirption
 This package includes one module: montecarlo. Within the montecarlo module there are 3 classes: Die, Game, and Analyzer. Below are the docstrings for each class. These can also be accessed by using the `help()` function.
@@ -143,7 +144,9 @@ inputs:
 - nrolls:
     - Default set to one unless the user reassigns it.
     - Nrolls should be an integer.
+  
 outputs:
+
  - results:
      - A python list of the results of the rolls
 
@@ -153,10 +156,10 @@ outputs:
 
 ### Game Class
 
--Gives the user the ability to roll one or more similar die. 
--The die should have the same number of sides and associated faces.
--Game is initialized with a python list of one or more dice created from the die class.
--Game gives the user the ability to "roll" the inputed dice a given number of times.
+- Gives the user the ability to roll one or more similar die. 
+- The die should have the same number of sides and associated faces.
+- Game is initialized with a python list of one or more dice created from the die class.
+- Game gives the user the ability to "roll" the inputed dice a given number of times.
 
 #### Methods:
     
@@ -310,7 +313,7 @@ outputs:
 - For each row of the data, this method finds the number of unique values. If the number of unique values is greater than 1, that roll was not a jackpot.
 - For each row where the number of unique values is equal to one, the jackpot count goes up by one.
 
-inputs:none 
+inputs: None 
 
 outputs: 
 - jack_count
@@ -323,7 +326,7 @@ outputs:
 - Calculates the distinct permutations of faces rolled in a game and their counts.
 - A permutaiton is dependent on order and may contain repetitions.
 
-inputs:None  
+inputs: None  
 
 outputs:
 - perm_count_df
