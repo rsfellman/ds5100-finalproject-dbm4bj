@@ -46,7 +46,7 @@ class Die:
         '''
         
         if not isinstance (N, np.ndarray):
-            raise TypeError("The N number of sides must be a NumPy array")
+            raise TypeError("The N sides must be a NumPy array")
         if len(N) != len(np.unique(N)):
             raise ValueError("The faces must be unique values")
         else:
@@ -198,9 +198,11 @@ class Game:
             return last_play
         if format == "narrow":
             last_play = pd.DataFrame(self.__outcome.unstack())
+            last_play.index = last_play.index.reorder_levels(order=[1, 0])
+            last_play.index.names = ['roll_number', 'die_number']
             return last_play
         else:
-            raise TypeError(f"{format} is not an acceptable format. Please enter 'narrow' or 'wide'")
+            raise ValueError(f"{format} is not an acceptable format. Please enter 'narrow' or 'wide'")
              
     
 
@@ -251,7 +253,7 @@ class Analyzer:
     def count_jackpots(self):
         ''' 
         Calculates the number of times a game resulted in a jackpot and returns and integer.
-        A jackpot is when all the races for a given roll are the same.
+        A jackpot is when all the faces for a given roll are the same.
         For each row of the data, this method finds the number of unique values. If the number of unique values is greater than 1, that roll was not a jackpot.
         For each row where the number of unique values is equal to one, the jackpot count goes up by one.
         ---
