@@ -65,7 +65,6 @@ class GameTestSuite(unittest.TestCase):
     ---
     Methods:
     test_05_initializer: Tests to make sure our initializer creates the attribute for the game class correctly.
-
     test_06_play: Tests to see if the play method correctly sampled the dice for a given number of rolls.
     test_07_show_last_play: Tests to make sure the output of the show_last_play method is a dataframe.
     '''
